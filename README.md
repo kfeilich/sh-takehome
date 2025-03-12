@@ -41,7 +41,6 @@ _
 	* merged_rates_20250313.csv
 * merge_rates_20250313.ipynb
 
-<br>
 ### 2. Data Description
 For this task, I was provided with two source tables with the following field values (and my assumed interpretations of them where not obvious): 
 
@@ -97,19 +96,15 @@ Based on these fields, it looks like I could potentially join on:
 
 I will attempt to keep all of the other fields since I don't know what will be important yet. I'll prefix the columns from each table to make it easier for me to parse later.
 
-<br>
 ### 3. General Approach
 These source tables are not large, so for this, I can use pandas to do the merge. For scaling, would probably use a distributed approach using SQL and/or PySpark. I have already been told there are discrepencies among the tables, and I'm not 100% sure where they might be--so an outer join will allow me to look at the unmatched rows. Inconsistencies in data formatting can be addressed at that point, the merge re-run, and then I can calculate the relative delta for matching rows. Subsequent analysis of the unmatched rows will hopefully inform me about challenges for missing values and possible approaches for imputation.
 
-<br>
 ### 4. Challenges
 TBD
 
-<br>
 ### 5. Assumptions and Justifications
 TBD
 
-<br>
 ### 6. Suggested Improvements, Scaling, and Next Steps
  * The approach used here (jupyter notebook and pandas-based) is not going to work for very large datasets--but it is suitable for identifying patterns and challenges from small data samples, and planning for scaled implementation. If the datasets do become large enough to justifty distributed computing, it would be worth investing in a cloud distributed computing pipeline, ideally with tools for standardized data processing pipelines and analysis. (I've used Palantir and MS Azure, but I'm sure there are others). 
  * Ideally, I would like to see standardized primary and foreign keys in the schema for these source tables, so I could merge on network_id. 
@@ -120,5 +115,5 @@ TBD
 * _Beyond the current use-case_: There are a number of future directions I could see Serif going in, depending on the healthcare payer-provider ecosystem (and surrounding regulations). 
 	* From providing existing data to providing suggested solutions: If you have enough data, you could also, probably, determine a "best value" rate estimate for a given hospital, giving them something to target in their negotiations. Similarly, you could provide data to plans/networks to give a better idea of the landscape. (Note: both sides are probably already doing it to some extent, but having a third party independently doing so may be both a convenience and a negotiation tool.)
 	* Navigating changing regulatory environments: In an extreme case, if Medicare and Medicaid are dissolved, it may be prudent to simulate the effects of such a shock to overall rates (almost a consulting/research role). This would likely involve a healthcare market econometrician. In another extreme (longer term, possibly) case, if a public option, or even a Medicare/Medicaid expansion were available, there might also be a market for predictive or exploratory analytics.
-	* Independent cost-efficiency research: This is probably MAJOR scope creep, but, if there are MAJOR discrepencies/residuals in rates outside of those due to geography for a given procedure, it may make sense to partner with healthcare providers and plans to determine what, if anything, is driving those outliers. Is it pure profit margin? Is there a questionable supply chain issue? Are providers underutilized? There are a bunch of ways to estimate/calculate healthcare costs (I've got a little experience with time-driven activity based costing). I imagine both payers and facilities would like to drive down rates. (Providers don't love this kind of effort... but that's why more work is always required to research value-based care and other appropaches to fund healthcare. Other countries are **much** better at this than we are.
+	* Independent cost-efficiency research: This is probably MAJOR scope creep, but, if there are MAJOR discrepencies/residuals in rates outside of those due to geography for a given procedure, it may make sense to partner with healthcare providers and plans to determine what, if anything, is driving those outliers. Is it pure profit margin? Is there a questionable supply chain issue? Are providers underutilized? There are a bunch of ways to estimate/calculate healthcare costs (I've got a little experience with time-driven activity based costing). I imagine both payers and facilities would like to drive down rates. (Providers don't love this kind of effort... but that's why more work is always required to research value-based care and other appropaches to fund healthcare.) Other countries are **much** better at this than we are.
 

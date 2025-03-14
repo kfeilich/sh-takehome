@@ -2,7 +2,7 @@
 
 Author: Kara Feilich  
 Date Created: 2025MAR13  
-Date Last Updated: 2025MAR13  
+Date Last Updated: 2025MAR14   
 <br> 
 **Description**:  
 This repo merges two tables provided by Serif Health describing Payer and Provider negotiated rates into a shared schema, identifies discrepencies, and where possible, resolves those discrepencies. 
